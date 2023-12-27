@@ -1,0 +1,42 @@
+{
+  "users": [
+   {
+	"login": string,
+	"password": string,
+	"proxy": string,
+	"groups" : [
+		{
+		  "id": string,
+		  "retweet_n": int,
+		},
+		{
+		  "id": string,
+		  "retweet_n": int,
+		}
+	],
+	"messages": [
+	"msg1", "msg2"
+	]
+   },
+   {
+	"login": string,
+	  "password": string,
+	  "proxy": string,
+	  "groups" : [
+		{
+		  "id": string,
+		  "retweet_n": int,
+		},
+		{
+		  "id": string,
+		  "retweet_n": int,
+		}
+	  ],
+	  "messages": [
+	    "msg1", "msg2"
+	  ]
+   }
+  ],
+  "max_tweet": int,
+  "cooldown": int,
+}
