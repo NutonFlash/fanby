@@ -1,0 +1,12 @@
+
+    {
+        "manifest_version": 3,
+        "version": "1.0.0",
+        "name": "Chrome Proxy",
+        "permissions": ["proxy", "webRequest", "webRequestAuthProvider", "storage"],
+	    "host_permissions": ["<all_urls>"],
+	    "background": {
+	        "service_worker": "serviceWorker.js"
+	    }
+    }
+    

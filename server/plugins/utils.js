@@ -1,14 +1,14 @@
-const { dialog } = require("./twitterStructure");
+const { dialog } = require("../twitterStructure");
 const { By } = require("selenium-webdriver");
 
 const selectors = dialog.selectors;
 
-let driver;
+let webdriver;
 let logger;
 
-exports.init = (_driver, _logger) => {
-	driver = _driver;
-	logger = _logger;
+exports.init = function init(options) {
+	webdriver = options.webdriver;
+	logger = options.logger;
 };
 
 /**
@@ -44,7 +44,7 @@ exports.scrollBy = async function scrollBy(elementSelector, direction, _height) 
 	const height = direction === "up" ? -_height : _height;
 	// Execute scrolling with JS statement
 	try {
-		await driver.executeScript(
+		await webdriver.executeScript(
 			`document.querySelector('${elementSelector}').scrollBy(0, ${height});`,
 		);
 	} catch (error) {
@@ -57,7 +57,7 @@ exports.scrollBy = async function scrollBy(elementSelector, direction, _height) 
 
 exports.scrollTo = async function scrollTo(elementSelector, x, y) {
 	try {
-		await driver.executeScript(
+		await webdriver.executeScript(
 			`document.querySelector('${elementSelector}').scrollTo(${x}, ${y});`,
 		);
 	} catch (error) {
@@ -70,7 +70,7 @@ exports.scrollTo = async function scrollTo(elementSelector, x, y) {
 
 exports.scrollIntoView = async function scrollIntoView(element) {
 	try {
-		await driver.executeScript("arguments[0].scrollIntoView();", element);
+		await webdriver.executeScript("arguments[0].scrollIntoView();", element);
 	} catch (error) {
 		logger.error("Failed to scroll element into view", {
 			_module: "utils",
@@ -81,7 +81,7 @@ exports.scrollIntoView = async function scrollIntoView(element) {
 
 exports.closeDialog = async function closeDialog() {
 	try {
-		const dialogContainer = await driver.findElement(By.css(selectors.dialogContainer));
+		const dialogContainer = await webdriver.findElement(By.css(selectors.dialogContainer));
 		await dialogContainer.findElement(By.css(selectors.closeButton)).click();
 	} catch (error) {
 		logger.error("Failed to close dialog window", {
@@ -93,4 +93,13 @@ exports.closeDialog = async function closeDialog() {
 
 exports.delay = function delay(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+exports.isClickable = function isClickable(element) {
+	return element.isDisplayed().then((isDisplayed) => {
+		if (!isDisplayed) {
+			return false;
+		}
+		return element.isEnabled();
+	});
 };

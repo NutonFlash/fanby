@@ -2,4 +2,6 @@ node_modules
 .vscode
 .env
 *.log
-client/out
+client/release
+server/chrome
+server/chromedriver
