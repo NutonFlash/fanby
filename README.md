@@ -108,6 +108,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
 
 
 #### 3. Twitter Accounts
+
+   - **Get User**
      
      `GET /twitter-accounts` - returns all twitter account entities owned by the user.
 
