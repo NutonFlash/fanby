@@ -600,8 +600,6 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     
       `POST /health/database` - returns status code `200` if the database is available.
 
-
-
 ## ERM Diagram
 
 ![ERM Diagram](https://github.com/NutonFlash/twitter-soft/blob/main/Fanby%20ERM%20Diagram.png)
