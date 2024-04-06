@@ -602,4 +602,4 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
 
 ## ERM Diagram
 
-![ERM Diagram](https://github.com/NutonFlash/twitter-soft/blob/main/Fanby%20ERM%20Diagram.png)
+![ERM Diagram](https://github.com/NutonFlash/twitter-soft/blob/main/Fanby%20ERM%20Diagram.jpeg)
