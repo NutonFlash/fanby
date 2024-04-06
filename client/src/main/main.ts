@@ -1,19 +1,20 @@
-/* eslint global-require: off, no-console: off, promise/always-return: off */
-
-/**
- * This module executes inside of electron's main process. You can start
- * electron renderer process from here and communicate with the other processes
- * through IPC.
- *
- * When running `npm run build` or `npm run build:main`, this file is compiled to
- * `./src/main.js` using webpack. This gives us some performance wins.
- */
+/* eslint-disable promise/always-return */
+/* eslint-disable global-require */
 import path from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import MenuBuilder from './menu';
+import Store from 'electron-store';
 import { resolveHtmlPath } from './util';
+
+const dotenv = require('dotenv');
+const dotenvExpand = require('dotenv-expand');
+
+const config = dotenv.config();
+
+dotenvExpand.expand(config);
+
+const store = new Store();
 
 class AppUpdater {
   constructor() {
@@ -24,12 +25,6 @@ class AppUpdater {
 }
 
 let mainWindow: BrowserWindow | null = null;
-
-ipcMain.on('ipc-example', async (event, arg) => {
-  const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  console.log(msgTemplate(arg));
-  event.reply('ipc-example', msgTemplate('pong'));
-});
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -43,24 +38,7 @@ if (isDebug) {
   require('electron-debug')();
 }
 
-const installExtensions = async () => {
-  const installer = require('electron-devtools-installer');
-  const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-  const extensions = ['REACT_DEVELOPER_TOOLS'];
-
-  return installer
-    .default(
-      extensions.map((name) => installer[name]),
-      forceDownload,
-    )
-    .catch(console.log);
-};
-
 const createWindow = async () => {
-  if (isDebug) {
-    await installExtensions();
-  }
-
   const RESOURCES_PATH = app.isPackaged
     ? path.join(process.resourcesPath, 'assets')
     : path.join(__dirname, '../../assets');
@@ -71,14 +49,16 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728,
-    icon: getAssetPath('icon.png'),
+    width: 1920,
+    height: 1080,
+    frame: false,
+    icon: getAssetPath('/robot/icon.png'),
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
     },
+    autoHideMenuBar: true,
   });
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));
@@ -90,6 +70,7 @@ const createWindow = async () => {
     if (process.env.START_MINIMIZED) {
       mainWindow.minimize();
     } else {
+      mainWindow.maximize();
       mainWindow.show();
     }
   });
@@ -97,9 +78,6 @@ const createWindow = async () => {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
-
-  const menuBuilder = new MenuBuilder(mainWindow);
-  menuBuilder.buildMenu();
 
   // Open urls in the user's browser
   mainWindow.webContents.setWindowOpenHandler((edata) => {
@@ -135,3 +113,41 @@ app
     });
   })
   .catch(console.log);
+
+// IPC listener
+ipcMain.on('electron-shell-openExternal', async (event, url) => {
+  event.returnValue = shell.openExternal(url);
+});
+ipcMain.on('electron-store-clear', async (event) => {
+  event.returnValue = store.clear();
+});
+ipcMain.on('electron-store-has', async (event, key) => {
+  event.returnValue = store.has(key);
+});
+ipcMain.on('electron-store-get', async (event, key, defaultValue) => {
+  event.returnValue = store.get(key, defaultValue);
+});
+ipcMain.on('electron-store-set', async (event, key, val) => {
+  store.set(key, val);
+});
+ipcMain.on('electron-store-delete', async (event, key) => {
+  store.delete(key);
+});
+ipcMain.on('get-env-variable', (event, key) => {
+  event.returnValue = process.env[key];
+});
+ipcMain.on('minimize-window', () => {
+  mainWindow?.minimize();
+});
+ipcMain.on('maximize-window', () => {
+  mainWindow?.maximize();
+});
+ipcMain.on('restore-window', () => {
+  mainWindow?.restore();
+});
+ipcMain.on('isMaximized', (event) => {
+  event.returnValue = mainWindow?.isMaximized();
+});
+ipcMain.on('close-window', () => {
+  mainWindow?.close();
+});

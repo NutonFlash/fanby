@@ -9,13 +9,28 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@ngrok/ngrok": "^1.0.0",
 		"@puppeteer/browsers": "^1.9.0",
-		"dotenv": "^16.3.1",
+		"axios": "^1.6.7",
+		"bcrypt": "^5.1.1",
+		"cls-hooked": "^4.2.2",
+		"cookie": "^0.6.0",
+		"cookie-parser": "^1.4.6",
+		"cors": "^2.8.5",
+		"dotenv": "^16.4.5",
+		"express": "^4.18.2",
+		"jsonwebtoken": "^9.0.2",
 		"jszip": "^3.10.1",
+		"mysql2": "^3.9.1",
 		"selenium-webdriver": "^4.16.0",
-		"winston": "^3.11.0"
+		"sequelize": "^6.37.1",
+		"winston": "^3.11.0",
+		"ws": "^8.16.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.4.1"
+	},
+	"optionalDependencies": {
+		"bufferutil": "^4.0.8"
 	}
 }

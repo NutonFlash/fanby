@@ -1,7 +1,8 @@
 node_modules
-.vscode
-.env
+.*
+!.gitignore
 *.log
 client/release
-server/chrome
-server/chromedriver
+server/1
+server/chrome-win64
+server/chromedriver-win64
