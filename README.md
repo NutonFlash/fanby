@@ -117,13 +117,13 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     
      Parametres:
        - "**includeState**" (optional): Boolean value whether to include account state in the response.
+       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., 2024-04-05 or 2024-04-05,2024-04-06.
        - "**includeGroups**" (optional): Boolean value whether to include array of groups used by account in the response.
-       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format startDate-endDate, e.g., 2024-04-05 or 2024-04-05-2024-04-06.
-       - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format startDate-endDate, e.g., 2024-04-05 or 2024-04-05-2024-04-06.
+       - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., 2024-04-05 or 2024-04-05,2024-04-06.
 
      Request:
 
-     `GET /twitter-accounts?includeState=true&includeAccountStats=2024-04-05-2024-04-06`
+     `GET /twitter-accounts?includeState=true&includeAccountStats=2024-04-05,2024-04-06`
 
      Response:
      ```
@@ -180,13 +180,13 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     
      Parametres:
        - "**includeState**" (optional): Boolean value whether to include account state in the response.
+       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., 2024-04-05 or 2024-04-05,2024-04-06.
        - "**includeGroups**" (optional): Boolean value whether to include array of groups used by account in the response.
-       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format startDate-endDate, e.g., 2024-04-05 or 2024-04-05-2024-04-06.
-       - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format startDate-endDate, e.g., 2024-04-05 or 2024-04-05-2024-04-06.
+       - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., 2024-04-05 or 2024-04-05,2024-04-06.
 
      Request:
 
-     `GET /twitter-accounts/102?includeState=true&includeGroups=true&includeAccountStats=2024-04-05&includeGroupStats=2024-04-05`
+     `GET /twitter-accounts/102?includeState=true&includeAccountStats=2024-04-05&includeGroups=true&includeGroupStats=2024-04-05`
 
      Response:
      ```
@@ -225,9 +225,15 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
           "createdAt": "2024-04-05 00:00:00",
           "updatedAt": "2024-04-05 19:23:00",
         }
-      ]
-      groups: [
-        {
+      ],
+      joinAccountGroups: {
+        "id": "3",
+        "accountId": "102",
+        "groupId": "1730563812057895261",
+        "isUsed": true,
+        "createdAt": "2024-04-05 00:00:00",
+        "updatedAt": "2024-04-05 19:23:00",
+        "group": {
           "id": "1730563812057895261",
           "name": "The Best Promotion Group",
           "requiredRetweets": 3,
@@ -239,15 +245,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
           "bestEndTime": "17:00:00",
           "createdAt": "2024-04-05 00:00:00",
           "updatedAt": "2024-04-05 19:23:00",
-        }
-      ],
-      joinAccountGroup: {
-        "id": "3",
-        "accountId": "102",
-        "groupId": "1730563812057895261",
-        "isUsed": true,
-        "createdAt": "2024-04-05 00:00:00",
-        "updatedAt": "2024-04-05 19:23:00",
+        },
         "accountGroupStats": [
           {
             "id": "12",
