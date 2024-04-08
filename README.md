@@ -472,11 +472,9 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     Parametres:
       - "**ids**" (required): Array of proxy ids to be checked.
       
-    Request Body:
-    ```
-    {
-      "ids": ["2", "4", "12"],
-    }
+    Request:
+   
+    `POST /proxies/check?ids=1,12,23,33`
     ```
     Response:
     ```
