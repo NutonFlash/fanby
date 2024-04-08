@@ -475,7 +475,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     Request:
    
     `POST /proxies/check?ids=1,12,23,33`
-    ```
+    
     Response:
     ```
     {
