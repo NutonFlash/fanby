@@ -4,12 +4,12 @@
     - [Base URL](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#base-url)
     - [Authentication](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#authentication)
     - [Endpoints](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#endpoints)
-      - [Auth](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#auth)
-      - [User](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#user)
-      - [Twitter Accounts](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#twitter-accounts)
-      - [Proxies](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#proxies-white_check_mark)
-      - [Invoices](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#invoices)
-      - [Health](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#health)
+      - [Auth](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#1-auth)
+      - [User](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#2-user)
+      - [Twitter Accounts](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#3-twitter-accounts)
+      - [Proxies](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#4-proxies-white_check_mark)
+      - [Invoices](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#5-invoices)
+      - [Health](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#6-health)
   - [ERM Diagram](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#erm-diagram)
 ## RESTful API Documentation
 This document provides details on the endpoints of internal API that are used for client-side interaction.
