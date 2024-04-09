@@ -1,6 +1,16 @@
 # Fanby App
 ## Table of Contents
   - [RESTful API Documentation](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#restful-api-documentation)
+    - [Base URL](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#base-url)
+    - [Authentication](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#authentication)
+    - [Endpoints](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#endpoints)
+      - [Auth](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#auth)
+      - [User](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#user)
+      - [Twitter Accounts](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#twitter-accounts)
+      - [Proxies](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#proxies)
+      - [Invoices](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#invoices)
+      - [Health](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#health)
+  - [ERM Diagram](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#erm-diagram)
 ## RESTful API Documentation
 This document provides details on the endpoints of internal API that are used for client-side interaction.
 ### Base URL
