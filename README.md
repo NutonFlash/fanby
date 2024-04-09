@@ -1,6 +1,6 @@
 # Fanby App
 ## Table of Contents
-  - [RESTful API Documentation](https://github.com/NutonFlash/fanby-app/blob/main/README.md#restful-api-documentation)
+  - [RESTful API Documentation](https://github.com/NutonFlash/fanby-app/tree/main?tab=readme-ov-file#restful-api-documentation)
 ## RESTful API Documentation
 This document provides details on the endpoints of internal API that are used for client-side interaction.
 ### Base URL
