@@ -372,7 +372,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
    
     `DELETE /twitter-accounts?ids=1,12,23,33`
 
-#### 4. Proxies
+#### 4. Proxies :white_check_mark:
   - **Get All Proxies**
       
       `GET /proxies` - returns all proxy entities owned by the user.
