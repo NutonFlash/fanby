@@ -7,7 +7,7 @@
       - [Auth](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#auth)
       - [User](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#user)
       - [Twitter Accounts](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#twitter-accounts)
-      - [Proxies](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#proxies)
+      - [Proxies](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#proxies-white_check_mark)
       - [Invoices](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#invoices)
       - [Health](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#health)
   - [ERM Diagram](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#erm-diagram)
