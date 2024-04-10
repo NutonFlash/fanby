@@ -549,14 +549,16 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     
     Parametres:
       - "**priceAmount**" (required): Inoice amount that should be payed by the user.
-      - "**orderDescription**" (required): Order description that will be showed for the user in invoice.
+      - "**actQty**" (required): Quantity of activations that are purchasing.
+      - "**orderDesc**" (required): Order description that will be showed for the user in invoice.
       
 
     Request Body:
     ```
     {
       "priceAmount": 150.0,
-      "orderDescription": "Account Activation x 3",
+      "actQty": 5,
+      "orderDesc": "Account Activation x 5",
     }
     ```
      Response:
@@ -565,6 +567,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "id": "31",
       "userId": "10",
       "amount": 150.0,
+      "actQty": 5,
       "link": "https://plisio.net/invoice/66043debdb94f7010a0a0425",
       "received": 0.0,
       "currency": "USDT_TRC",
