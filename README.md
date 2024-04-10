@@ -4,8 +4,8 @@
     - [Base URL](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#base-url)
     - [Authentication](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#authentication)
     - [Endpoints](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#endpoints)
-      - [Auth](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#1-auth)
-      - [User](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#2-user)
+      - [Auth](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#1-auth-white_check_mark)
+      - [User](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#2-user-white_check_mark)
       - [Twitter Accounts](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#3-twitter-accounts-white_check_mark)
       - [Proxies](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#4-proxies-white_check_mark)
       - [Invoices](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#5-invoices)
@@ -26,7 +26,7 @@ You need to include an **Authorization header** with a valid JWT token in such f
 
 User Id is automatically exctracted from payload of JWT Token for every authorized request.
 ### Endpoints
-#### 1. Auth
+#### 1. Auth :white_check_mark:
    - **Login User**
      
      `POST /auth/login` - login user and returns access and refresh tokens.
@@ -98,7 +98,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      }
      ```
      
-#### 2. User
+#### 2. User :white_check_mark:
    - **Get User**
      
      `GET /user` - returns an information about user who sent the request.
