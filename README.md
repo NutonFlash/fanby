@@ -108,9 +108,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      Response:
      ```
      {
-      "id": "17"
-      "email": "example@gmail.com"
-      "hashedPwd": "$2y$10$.sXVEFdzzVVYl0Tj5FPi4.tXOMmLEDb9wh5TqTGuXvJamxMzm4fhG",
+      "id": "17",
+      "email": "example@gmail.com",
       "referalCode": "DISC2024",
       "activationsLeft": 3,
       "createdAt": "2024-02-12 13:00:00",
@@ -144,7 +143,6 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "userId": "10",
       "proxyId": "20",
       "username": "NutonFlash",
-      "password": "axSDla12apad",
       "avatar": "",
       "followers": 202,
       "posts": 1092,
@@ -207,7 +205,6 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "userId": "10",
       "proxyId": "20",
       "username": "NutonFlash",
-      "password": "axSDla12apad",
       "avatar": "",
       "followers": 202,
       "posts": 1092,
@@ -297,7 +294,6 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "userId": "12",
       "proxyId": null,
       "username": "NutonFlash",
-      "password": "axSDla12apad",
       "avatar": "",
       "followers": 0,
       "posts": 0,
