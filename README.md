@@ -6,7 +6,7 @@
     - [Endpoints](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#endpoints)
       - [Auth](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#1-auth)
       - [User](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#2-user)
-      - [Twitter Accounts](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#3-twitter-accounts)
+      - [Twitter Accounts](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#3-twitter-accounts-white_check_mark)
       - [Proxies](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#4-proxies-white_check_mark)
       - [Invoices](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#5-invoices)
       - [Health](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#6-health)
@@ -119,7 +119,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      ```
 
 
-#### 3. Twitter Accounts
+#### 3. Twitter Accounts :white_check_mark:
 
    - **Get All Twitter Accounts**
      
