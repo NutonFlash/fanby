@@ -1,4 +1,16 @@
 # Fanby App
+## Table of Contents
+  - [RESTful API Documentation](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#restful-api-documentation)
+    - [Base URL](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#base-url)
+    - [Authentication](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#authentication)
+    - [Endpoints](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#endpoints)
+      - [Auth](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#1-auth-white_check_mark)
+      - [User](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#2-user-white_check_mark)
+      - [Twitter Accounts](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#3-twitter-accounts-white_check_mark)
+      - [Proxies](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#4-proxies-white_check_mark)
+      - [Invoices](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#5-invoices)
+      - [Health](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#6-health)
+  - [ERM Diagram](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#erm-diagram)
 ## RESTful API Documentation
 This document provides details on the endpoints of internal API that are used for client-side interaction.
 ### Base URL
@@ -14,7 +26,7 @@ You need to include an **Authorization header** with a valid JWT token in such f
 
 User Id is automatically exctracted from payload of JWT Token for every authorized request.
 ### Endpoints
-#### 1. Auth
+#### 1. Auth :white_check_mark:
    - **Login User**
      
      `POST /auth/login` - login user and returns access and refresh tokens.
@@ -86,7 +98,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      }
      ```
      
-#### 2. User
+#### 2. User :white_check_mark:
    - **Get User**
      
      `GET /user` - returns an information about user who sent the request.
@@ -96,9 +108,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      Response:
      ```
      {
-      "id": "17"
-      "email": "example@gmail.com"
-      "hashedPwd": "$2y$10$.sXVEFdzzVVYl0Tj5FPi4.tXOMmLEDb9wh5TqTGuXvJamxMzm4fhG",
+      "id": "17",
+      "email": "example@gmail.com",
       "referalCode": "DISC2024",
       "activationsLeft": 3,
       "createdAt": "2024-02-12 13:00:00",
@@ -107,7 +118,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      ```
 
 
-#### 3. Twitter Accounts
+#### 3. Twitter Accounts :white_check_mark:
 
    - **Get All Twitter Accounts**
      
@@ -132,7 +143,6 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "userId": "10",
       "proxyId": "20",
       "username": "NutonFlash",
-      "password": "axSDla12apad",
       "avatar": "",
       "followers": 202,
       "posts": 1092,
@@ -195,7 +205,6 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "userId": "10",
       "proxyId": "20",
       "username": "NutonFlash",
-      "password": "axSDla12apad",
       "avatar": "",
       "followers": 202,
       "posts": 1092,
@@ -285,7 +294,6 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "userId": "12",
       "proxyId": null,
       "username": "NutonFlash",
-      "password": "axSDla12apad",
       "avatar": "",
       "followers": 0,
       "posts": 0,
@@ -360,7 +368,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
    
     `DELETE /twitter-accounts?ids=1,12,23,33`
 
-#### 4. Proxies
+#### 4. Proxies :white_check_mark:
   - **Get All Proxies**
       
       `GET /proxies` - returns all proxy entities owned by the user.
@@ -540,14 +548,16 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     
     Parametres:
       - "**priceAmount**" (required): Inoice amount that should be payed by the user.
-      - "**orderDescription**" (required): Order description that will be showed for the user in invoice.
+      - "**actQty**" (required): Quantity of activations that are purchasing.
+      - "**orderDesc**" (required): Order description that will be showed for the user in invoice.
       
 
     Request Body:
     ```
     {
       "priceAmount": 150.0,
-      "orderDescription": "Account Activation x 3",
+      "actQty": 5,
+      "orderDesc": "Account Activation x 5",
     }
     ```
      Response:
@@ -556,6 +566,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "id": "31",
       "userId": "10",
       "amount": 150.0,
+      "actQty": 5,
       "link": "https://plisio.net/invoice/66043debdb94f7010a0a0425",
       "received": 0.0,
       "currency": "USDT_TRC",
