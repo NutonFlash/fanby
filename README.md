@@ -519,7 +519,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     }
     ``` 
 
-#### 5. Invoices
+#### 5. Invoices :white_check_mark:
   - **Get All Invoices**
       
       `GET /invoices` - returns all invoice entities owned by the user.
@@ -597,7 +597,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     }
     ```
 
-#### 6. Health
+#### 6. Health :white_check_mark:
   - **Check Server Availability**
     
       `POST /health/server` - returns status code `200` if the server is available.
@@ -605,6 +605,54 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
   - **Check Database Availability**
     
       `POST /health/database` - returns status code `200` if the database is available.
+
+#### 7. Account Prices :white_check_mark:
+  - **Get All Activation Prices**
+    
+      `GET /activation-prices` - returns all activation price entities owned by the user.
+
+      This endpoint requires authentication. Include an **Authorization header** with a valid JWT token.
+
+      Response
+      ```
+      [
+    {
+        "id": 1,
+        "price": 100,
+        "quantity": 1,
+        "createdAt": "2024-04-14T17:56:09.000Z",
+        "updatedAt": "2024-04-14T17:56:09.000Z"
+    },
+    {
+        "id": 2,
+        "price": 95,
+        "quantity": 5,
+        "createdAt": "2024-04-14T17:56:19.000Z",
+        "updatedAt": "2024-04-14T17:56:19.000Z"
+    },
+    {
+        "id": 3,
+        "price": 85,
+        "quantity": 15,
+        "createdAt": "2024-04-14T17:56:26.000Z",
+        "updatedAt": "2024-04-14T17:56:26.000Z"
+    },
+    {
+        "id": 4,
+        "price": 70,
+        "quantity": 25,
+        "createdAt": "2024-04-14T17:56:34.000Z",
+        "updatedAt": "2024-04-14T17:56:34.000Z"
+    },
+    {
+        "id": 5,
+        "price": 50,
+        "quantity": 50,
+        "createdAt": "2024-04-14T17:56:41.000Z",
+        "updatedAt": "2024-04-14T17:56:41.000Z"
+    }
+]
+```   
 
 ## ERM Diagram
 
