@@ -603,7 +603,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     
       `POST /health/database` - returns status code `200` if the database is available.
 
-#### 7. Account Prices :white_check_mark:
+#### 7. Activation Prices :white_check_mark:
   - **Get All Activation Prices**
     
       `GET /activation-prices` - returns all activation price entities owned by the user.
