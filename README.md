@@ -10,7 +10,7 @@
       - [Proxies](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#4-proxies-white_check_mark)
       - [Invoices](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#5-invoices-white_check_mark)
       - [Health](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#6-health-white_check_mark)
-      - [Activation Prices](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#6-activation-prices-white_check_mark)
+      - [Activation Prices](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#7-activation-prices-white_check_mark)
   - [ERM Diagram](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#erm-diagram)
 ## RESTful API Documentation
 This document provides details on the endpoints of internal API that are used for client-side interaction.
