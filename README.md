@@ -184,91 +184,91 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      ```
   - **Get Twitter Account**
      
-     `GET /twitter-accounts/{id}` - returns twitter account entity by the specified `id`.
+    `GET /twitter-accounts/{id}` - returns twitter account entity by the specified `id`.
 
-     This endpoint requires authentication. Include an **Authorization header** with a valid JWT token.
-    
-     Parametres:
-       - "**includeState**" (optional): Boolean value whether to include account state in the response.
-       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
-       - "**includeGroups**" (optional): Boolean value whether to include array of groups used by account in the response.
-       - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
+    This endpoint requires authentication. Include an **Authorization header** with a valid JWT token.
 
-     Request:
+    Parametres:
+      - "**includeState**" (optional): Boolean value whether to include account state in the response.
+      - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
+      - "**includeGroups**" (optional): Boolean value whether to include array of groups used by account in the response.
+      - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
 
-     `GET /twitter-accounts/102?includeState=true&includeAccountStats=2024-04-05&includeGroups=true&includeGroupStats=2024-04-05`
+    Request:
 
-     Response:
-     ```
-     {
-      "id": "102",
-      "userId": "10",
-      "proxyId": "20",
-      "username": "NutonFlash",
-      "avatar": "",
-      "followers": 202,
-      "posts": 1092,
-      "groupNumber": 23,
-      "activityTotal": 10932132,
-      "retweetsTotal": 230,
-      "messagesTotal": 49,
-      "isActivated": true,
-      "expirationDate": "2024-04-30 12:00:00",
-      "createdAt": "2024-04-05 02:00:00",
-      "updatedAt": "2024-04-05 12:00:00",
-      "state": {
-        "accountId" : "102",
-        "isRunning": true,
-        "label": "Running"
-        "details": "The account is in the running state. It makes retweets and write messages in automatic mode."
+    `GET /twitter-accounts/102?includeState=true&includeAccountStats=2024-04-05&includeGroups=true&includeGroupStats=2024-04-05`
+
+    Response:
+    ```
+    {
+    "id": "102",
+    "userId": "10",
+    "proxyId": "20",
+    "username": "NutonFlash",
+    "avatar": "",
+    "followers": 202,
+    "posts": 1092,
+    "groupNumber": 23,
+    "activityTotal": 10932132,
+    "retweetsTotal": 230,
+    "messagesTotal": 49,
+    "isActivated": true,
+    "expirationDate": "2024-04-30 12:00:00",
+    "createdAt": "2024-04-05 02:00:00",
+    "updatedAt": "2024-04-05 12:00:00",
+    "state": {
+      "accountId" : "102",
+      "isRunning": true,
+      "label": "Running"
+      "details": "The account is in the running state. It makes retweets and write messages in automatic mode."
+      "createdAt": "2024-04-05 00:00:00",
+      "updatedAt": "2024-04-05 19:23:00",
+    }
+    "accountStats": [
+      {
+        "id": "13",
+        "accountId": "102",
+        "activityToday": 23313,
+        "retweetsToday": 323,
+        "messagesToday": 19,
         "createdAt": "2024-04-05 00:00:00",
         "updatedAt": "2024-04-05 19:23:00",
       }
-      "accountStats": [
+    ],
+    joinAccountGroups: {
+      "id": "3",
+      "accountId": "102",
+      "groupId": "1730563812057895261",
+      "isUsed": true,
+      "createdAt": "2024-04-05 00:00:00",
+      "updatedAt": "2024-04-05 19:23:00",
+      "group": {
+        "id": "1730563812057895261",
+        "name": "The Best Promotion Group",
+        "requiredRetweets": 3,
+        "usersTotal": 290,
+        "usersFollowersTotal": 90231,
+        "usersActivityRate": 68,
+        "rating": 4,
+        "bestStartTime": "13:00:00",
+        "bestEndTime": "17:00:00",
+        "createdAt": "2024-04-05 00:00:00",
+        "updatedAt": "2024-04-05 19:23:00",
+      },
+      "accountGroupStats": [
         {
-          "id": "13",
-          "accountId": "102",
-          "activityToday": 23313,
-          "retweetsToday": 323,
-          "messagesToday": 19,
+          "id": "12",
+          "joinId": "3",
+          "activityToday": 312321,
+          "retweetsToday": 90,
+          "messagesToday": 23,
           "createdAt": "2024-04-05 00:00:00",
           "updatedAt": "2024-04-05 19:23:00",
         }
-      ],
-      joinAccountGroups: {
-        "id": "3",
-        "accountId": "102",
-        "groupId": "1730563812057895261",
-        "isUsed": true,
-        "createdAt": "2024-04-05 00:00:00",
-        "updatedAt": "2024-04-05 19:23:00",
-        "group": {
-          "id": "1730563812057895261",
-          "name": "The Best Promotion Group",
-          "requiredRetweets": 3,
-          "usersTotal": 290,
-          "usersFollowersTotal": 90231,
-          "usersActivityRate": 68,
-          "rating": 4,
-          "bestStartTime": "13:00:00",
-          "bestEndTime": "17:00:00",
-          "createdAt": "2024-04-05 00:00:00",
-          "updatedAt": "2024-04-05 19:23:00",
-        },
-        "accountGroupStats": [
-          {
-            "id": "12",
-            "joinId": "3",
-            "activityToday": 312321,
-            "retweetsToday": 90,
-            "messagesToday": 23,
-            "createdAt": "2024-04-05 00:00:00",
-            "updatedAt": "2024-04-05 19:23:00",
-          }
-        ]
-      }
-     }
-     ```   
+      ]
+    }
+    }
+    ```   
   - **Create Twitter Account**
      
     `POST /twitter-accounts` - create and returns twitter account entity, if it is not already added, along with account state and stats.
@@ -287,43 +287,43 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "password": "axSDla12apad",
     }
     ```
-     Response:
-     ```
-     {
-      "id": "2",
-      "userId": "12",
-      "proxyId": null,
-      "username": "NutonFlash",
-      "avatar": "",
-      "followers": 0,
-      "posts": 0,
-      "groupNumber": 0,
-      "activityTotal": 0,
-      "retweetsTotal": 0,
-      "messagesTotal": 0,
-      "isActivated": false,
-      "expirationDate": "2024-04-05 12:00:00",
-      "createdAt": "2024-04-05 12:00:00",
-      "updatedAt": "2024-04-05 12:00:00",
-      "state": {
-        "accountId" : "2",
-        "isRunning": false,
-        "label": "Disabled"
-        "details": "The account is in the disabled state."
+    Response:
+    ```
+    {
+    "id": "2",
+    "userId": "12",
+    "proxyId": null,
+    "username": "NutonFlash",
+    "avatar": "",
+    "followers": 0,
+    "posts": 0,
+    "groupNumber": 0,
+    "activityTotal": 0,
+    "retweetsTotal": 0,
+    "messagesTotal": 0,
+    "isActivated": false,
+    "expirationDate": "2024-04-05 12:00:00",
+    "createdAt": "2024-04-05 12:00:00",
+    "updatedAt": "2024-04-05 12:00:00",
+    "state": {
+      "accountId" : "2",
+      "isRunning": false,
+      "label": "Disabled"
+      "details": "The account is in the disabled state."
+    }
+    "accountStats": [
+      {
+        "id": "1",
+        "accountId": "2",
+        "activityToday": 0,
+        "retweetsToday": 0,
+        "messagesToday": 0,
+        "createdAt": "2024-04-05 12:00:00",
+        "updatedAt": "2024-04-05 12:00:00",
       }
-      "accountStats": [
-        {
-          "id": "1",
-          "accountId": "2",
-          "activityToday": 0,
-          "retweetsToday": 0,
-          "messagesToday": 0,
-          "createdAt": "2024-04-05 12:00:00",
-          "updatedAt": "2024-04-05 12:00:00",
-        }
-      ]
-     }
-     ``` 
+    ]
+    }
+    ``` 
   - **Update Twitter Account**
      
     `PUT /twitter-accounts/{id}` - update twitter account entity by the specified `id`.
@@ -399,8 +399,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       
       Request Body:
       ```
-      [
-      {
+      [{
         "host": "digit.cc",
         "port": 8000,
       },
@@ -409,13 +408,11 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
         "port": 8001,
         "username": "BelieverProxy",
         "password": "dasd0ad31ad823a",
-      }
-      ]
+      }]
       ```
      Response:
      ```
-     [
-      {
+      [{
         "id": "3",
         "userId": "10",
         "host": "digital.cc",
@@ -434,8 +431,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
         "password": "dasd0ad31ad823a",
         "createdAt": "2024-04-06 00:01:00",
         "updatedAt": "2024-04-06 00:01:00",
-      }
-    ]
+      }]
      ```    
   - **Update Proxy**
      
@@ -503,7 +499,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
         "ids": ["12"],
       }
     }
-     ```
+    ```
     Websocket Message:
     ```
     {
@@ -560,21 +556,21 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "orderDesc": "Account Activation x 5",
     }
     ```
-     Response:
-     ```
-     {
-      "id": "31",
-      "userId": "10",
-      "amount": 150.0,
-      "actQty": 5,
-      "link": "https://plisio.net/invoice/66043debdb94f7010a0a0425",
-      "received": 0.0,
-      "currency": "USDT_TRC",
-      "status": "Created",
-      "createdAt": "2024-04-06 00:00:00",
-      "updatedAt": "2024-04-06 23:00:00",
-     }
-     ```
+    Response:
+    ```
+    {
+    "id": "31",
+    "userId": "10",
+    "amount": 150.0,
+    "actQty": 5,
+    "link": "https://plisio.net/invoice/66043debdb94f7010a0a0425",
+    "received": 0.0,
+    "currency": "USDT_TRC",
+    "status": "Created",
+    "createdAt": "2024-04-06 00:00:00",
+    "updatedAt": "2024-04-06 23:00:00",
+    }
+    ```
   - **Update Invoice by Plisio**
      
     `POST /invoices/update` - update invoice entity by request from Plisio payment gateway.
@@ -615,44 +611,42 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
 
       Response
       ```
-      [
-    {
-        "id": 1,
-        "price": 100,
-        "quantity": 1,
-        "createdAt": "2024-04-14T17:56:09.000Z",
-        "updatedAt": "2024-04-14T17:56:09.000Z"
-    },
-    {
-        "id": 2,
-        "price": 95,
-        "quantity": 5,
-        "createdAt": "2024-04-14T17:56:19.000Z",
-        "updatedAt": "2024-04-14T17:56:19.000Z"
-    },
-    {
-        "id": 3,
-        "price": 85,
-        "quantity": 15,
-        "createdAt": "2024-04-14T17:56:26.000Z",
-        "updatedAt": "2024-04-14T17:56:26.000Z"
-    },
-    {
-        "id": 4,
-        "price": 70,
-        "quantity": 25,
-        "createdAt": "2024-04-14T17:56:34.000Z",
-        "updatedAt": "2024-04-14T17:56:34.000Z"
-    },
-    {
-        "id": 5,
-        "price": 50,
-        "quantity": 50,
-        "createdAt": "2024-04-14T17:56:41.000Z",
-        "updatedAt": "2024-04-14T17:56:41.000Z"
-    }
-]
-```   
+      [{
+          "id": 1,
+          "price": 100,
+          "quantity": 1,
+          "createdAt": "2024-04-14T17:56:09.000Z",
+          "updatedAt": "2024-04-14T17:56:09.000Z"
+      },
+      {
+          "id": 2,
+          "price": 95,
+          "quantity": 5,
+          "createdAt": "2024-04-14T17:56:19.000Z",
+          "updatedAt": "2024-04-14T17:56:19.000Z"
+      },
+      {
+          "id": 3,
+          "price": 85,
+          "quantity": 15,
+          "createdAt": "2024-04-14T17:56:26.000Z",
+          "updatedAt": "2024-04-14T17:56:26.000Z"
+      },
+      {
+          "id": 4,
+          "price": 70,
+          "quantity": 25,
+          "createdAt": "2024-04-14T17:56:34.000Z",
+          "updatedAt": "2024-04-14T17:56:34.000Z"
+      },
+      {
+          "id": 5,
+          "price": 50,
+          "quantity": 50,
+          "createdAt": "2024-04-14T17:56:41.000Z",
+          "updatedAt": "2024-04-14T17:56:41.000Z"
+      }]
+      ```   
 
 ## ERM Diagram
 

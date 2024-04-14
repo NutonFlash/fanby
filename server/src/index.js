@@ -3,7 +3,6 @@ require('dotenv').config();
 const http = require('http');
 const _app = require('./app');
 const _wss = require('./wss');
-// const executor = require("./services/executor");
 
 const PORT = process.env.APP_PORT || 3000;
 
