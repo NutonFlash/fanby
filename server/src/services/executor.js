@@ -1,6 +1,6 @@
-const webdriver = require("../webdriver");
-const logger = require("../logger");
-const { plugins, initPlugins } = require("../twitter/index");
+const webdriver = require('../webdriver');
+const logger = require('../logger');
+const { plugins, initPlugins } = require('../twitter/index');
 
 const { auth, messageParser, retweeter } = plugins;
 
@@ -10,7 +10,7 @@ exports.init = async function init(config) {
   initPlugins({
     account: config.account,
     webdriver: _webdriver,
-    logger: _logger,
+    logger: _logger
   });
 };
 
@@ -28,7 +28,7 @@ exports.process = async function process(request) {
       retweetCounter++;
     }
   }
-  console.log("maden retweets:", retweetCounter);
+  console.log('maden retweets:', retweetCounter);
   // await retweeter.retweetOwn(request.own);
 };
 

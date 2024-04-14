@@ -1,13 +1,13 @@
-const createInvoice = require("./create");
-const updateInvoice = require("./update");
-const fetchAllInvoices = require("./getAll");
-const { authorizeToken } = require("../auth/utils");
+const express = require('express');
+const createInvoice = require('./add');
+const updateInvoice = require('./update');
+const getAllInvoices = require('./getAll');
+const { authorizeToken } = require('../utils');
 
-const express = require("express");
 const router = express.Router();
 
-router.get("/", authorizeToken, fetchAllInvoices);
-router.post("/", authorizeToken, createInvoice);
-router.post("/update", updateInvoice);
+router.get('/', authorizeToken, getAllInvoices);
+router.post('/', authorizeToken, createInvoice);
+router.post('/update', updateInvoice);
 
 module.exports = router;

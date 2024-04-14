@@ -1,5 +1,5 @@
-const utils = require("../twitter/utils");
-const winston = require("winston");
+const winston = require('winston');
+const utils = require('../twitter/utils');
 
 let logger;
 
@@ -13,20 +13,20 @@ function init() {
           level: info.level,
           message: info.message,
           module: info._module,
-          function: info._function,
+          function: info._function
         })
       )
     ),
     transports: [
       new winston.transports.File({
-        filename: "error.log ",
-        level: "error",
+        filename: 'error.log ',
+        level: 'error'
         // handleExceptions: true,
         // handleRejections: true,
       }),
-      new winston.transports.File({ filename: "app.log ", level: "info" }),
+      new winston.transports.File({ filename: 'app.log ', level: 'info' })
     ],
-    exitOnError: false,
+    exitOnError: false
   });
 
   return logger;
@@ -39,5 +39,5 @@ function destroy() {
 module.exports = {
   init,
   destroy,
-  logger,
+  logger
 };

@@ -109,7 +109,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
 
 #### 3. Twitter Accounts
 
-   - **Get User**
+   - **Get All Twitter Accounts**
      
      `GET /twitter-accounts` - returns all twitter account entities owned by the user.
 
@@ -117,13 +117,13 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     
      Parametres:
        - "**includeState**" (optional): Boolean value whether to include account state in the response.
+       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
        - "**includeGroups**" (optional): Boolean value whether to include array of groups used by account in the response.
-       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format startDate-endDate, e.g., 2024-04-05 or 2024-04-05-2024-04-06.
-       - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format startDate-endDate, e.g., 2024-04-05 or 2024-04-05-2024-04-06.
+       - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
 
      Request:
 
-     `GET /twitter-accounts?includeState=true&includeAccountStats=2024-04-05-2024-04-06`
+     `GET /twitter-accounts?includeState=true&includeAccountStats=2024-04-05,2024-04-06`
 
      Response:
      ```
@@ -180,13 +180,13 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     
      Parametres:
        - "**includeState**" (optional): Boolean value whether to include account state in the response.
+       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
        - "**includeGroups**" (optional): Boolean value whether to include array of groups used by account in the response.
-       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format startDate-endDate, e.g., 2024-04-05 or 2024-04-05-2024-04-06.
-       - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format startDate-endDate, e.g., 2024-04-05 or 2024-04-05-2024-04-06.
+       - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
 
      Request:
 
-     `GET /twitter-accounts/102?includeState=true&includeGroups=true&includeAccountStats=2024-04-05&includeGroupStats=2024-04-05`
+     `GET /twitter-accounts/102?includeState=true&includeAccountStats=2024-04-05&includeGroups=true&includeGroupStats=2024-04-05`
 
      Response:
      ```
@@ -225,9 +225,15 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
           "createdAt": "2024-04-05 00:00:00",
           "updatedAt": "2024-04-05 19:23:00",
         }
-      ]
-      groups: [
-        {
+      ],
+      joinAccountGroups: {
+        "id": "3",
+        "accountId": "102",
+        "groupId": "1730563812057895261",
+        "isUsed": true,
+        "createdAt": "2024-04-05 00:00:00",
+        "updatedAt": "2024-04-05 19:23:00",
+        "group": {
           "id": "1730563812057895261",
           "name": "The Best Promotion Group",
           "requiredRetweets": 3,
@@ -239,15 +245,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
           "bestEndTime": "17:00:00",
           "createdAt": "2024-04-05 00:00:00",
           "updatedAt": "2024-04-05 19:23:00",
-        }
-      ],
-      joinAccountGroup: {
-        "id": "3",
-        "accountId": "102",
-        "groupId": "1730563812057895261",
-        "isUsed": true,
-        "createdAt": "2024-04-05 00:00:00",
-        "updatedAt": "2024-04-05 19:23:00",
+        },
         "accountGroupStats": [
           {
             "id": "12",
@@ -384,17 +382,16 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       ```
   - **Bulk Create Proxy**
      
-    `POST /proxies` - create and returns proxy entities, if they are not already added.
+      `POST /proxies` - create and returns proxy entities, if they are not already added.
 
-    This endpoint requires authentication. Include an **Authorization header** with a valid JWT token.
+      This endpoint requires authentication. Include an **Authorization header** with a valid JWT token.
     
-    Parametres:
-      - "**proxies**" (required): Array of proxy objects to be created.
+      Parametres:
+        - "**proxies**" (required): Array of proxy objects to be created.
       
-
-    Request Body:
-    ```
-    [
+      Request Body:
+      ```
+      [
       {
         "host": "digit.cc",
         "port": 8000,
@@ -405,8 +402,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
         "username": "BelieverProxy",
         "password": "dasd0ad31ad823a",
       }
-    ]
-    ```
+      ]
+      ```
      Response:
      ```
      [
@@ -474,12 +471,10 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     Parametres:
       - "**ids**" (required): Array of proxy ids to be checked.
       
-    Request Body:
-    ```
-    {
-      "ids": ["2", "4", "12"],
-    }
-    ```
+    Request:
+   
+    `POST /proxies/check?ids=1,12,23,33`
+    
     Response:
     ```
     {
@@ -602,4 +597,4 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
 
 ## ERM Diagram
 
-![ERM Diagram](https://github.com/NutonFlash/twitter-soft/blob/main/Fanby%20ERM%20Diagram.png)
+![ERM Diagram](https://github.com/NutonFlash/twitter-soft/blob/main/Fanby%20ERM%20Diagram.jpeg)

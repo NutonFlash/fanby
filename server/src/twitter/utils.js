@@ -1,8 +1,8 @@
-const { dialog } = require("./selectors");
-const { By } = require("selenium-webdriver");
-const { webdriver, logger } = require("./dependencies");
+const { By } = require('selenium-webdriver');
+const { dialog } = require('./selectors');
+const { webdriver, logger } = require('./dependencies');
 
-const selectors = dialog.selectors;
+const { selectors } = dialog;
 
 /**
  * Convert timestamp to yyyy/mm/dd hh/mm:ss format
@@ -17,12 +17,13 @@ exports.timeConverter = function timeConverter(timestamp) {
     date: dateObj.getDate(),
     hour: dateObj.getHours(),
     min: dateObj.getMinutes(),
-    sec: dateObj.getSeconds(),
+    sec: dateObj.getSeconds()
   };
   for (prop in timeObj) {
     // If value is single digit, add leading 0
-    if (timeObj[prop].toString().length < 2)
+    if (timeObj[prop].toString().length < 2) {
       timeObj[prop] = `0${timeObj[prop]}`;
+    }
   }
   return `${timeObj.year}/${timeObj.month}/${timeObj.date} ${timeObj.hour}:${timeObj.min}:${timeObj.sec}`;
 };
@@ -39,7 +40,7 @@ exports.scrollBy = async function scrollBy(
   _height
 ) {
   // Mirror the height if scroll direction is up
-  const height = direction === "up" ? -_height : _height;
+  const height = direction === 'up' ? -_height : _height;
   // Execute scrolling with JS statement
   try {
     await webdriver.executeScript(
@@ -49,8 +50,8 @@ exports.scrollBy = async function scrollBy(
     logger.error(
       `Failed to scroll element with '${elementSelector}' css selector`,
       {
-        _module: "utils",
-        _function: "scrollBy",
+        _module: 'utils',
+        _function: 'scrollBy'
       }
     );
   }
@@ -65,8 +66,8 @@ exports.scrollTo = async function scrollTo(elementSelector, x, y) {
     logger.error(
       `Failed to scroll element with '${elementSelector}' css selector`,
       {
-        _module: "utils",
-        _function: "scrollTo",
+        _module: 'utils',
+        _function: 'scrollTo'
       }
     );
   }
@@ -74,11 +75,11 @@ exports.scrollTo = async function scrollTo(elementSelector, x, y) {
 
 exports.scrollIntoView = async function scrollIntoView(element) {
   try {
-    await webdriver.executeScript("arguments[0].scrollIntoView();", element);
+    await webdriver.executeScript('arguments[0].scrollIntoView();', element);
   } catch (error) {
-    logger.error("Failed to scroll element into view", {
-      _module: "utils",
-      _function: "scrollIntoView",
+    logger.error('Failed to scroll element into view', {
+      _module: 'utils',
+      _function: 'scrollIntoView'
     });
   }
 };
@@ -90,9 +91,9 @@ exports.closeDialog = async function closeDialog() {
     );
     await dialogContainer.findElement(By.css(selectors.closeButton)).click();
   } catch (error) {
-    logger.error("Failed to close dialog window", {
-      _module: "utils",
-      _function: "closeDialog",
+    logger.error('Failed to close dialog window', {
+      _module: 'utils',
+      _function: 'closeDialog'
     });
   }
 };

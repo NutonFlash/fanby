@@ -1,78 +1,77 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../sequelize");
-const User = require("./User");
-const Proxy = require("./Proxy");
+const { DataTypes } = require('sequelize');
+const sequelize = require('../sequelize');
+const User = require('./User');
+const Proxy = require('./Proxy');
 
-const Account = sequelize.define("Account", {
+const Account = sequelize.define('Account', {
   username: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
+    unique: true
   },
-  password: {
+  hashedPwd: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   avatar: {
     type: DataTypes.STRING,
-    defaultValue: "",
+    defaultValue: ''
   },
   followers: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
+    defaultValue: 0
   },
   posts: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
+    defaultValue: 0
   },
-  groups: {
+  groupNumber: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
+    defaultValue: 0
   },
   activityTotal: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
+    defaultValue: 0
   },
   retweetsTotal: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
+    defaultValue: 0
   },
   messagesTotal: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
+    defaultValue: 0
   },
   isActivated: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false,
+    defaultValue: false
   },
   expirationDate: {
     type: DataTypes.DATE,
-    defaultValue: Date.now,
-  },
+    defaultValue: Date.now
+  }
 });
 
-User.hasOne(Account, {
+User.hasMany(Account, {
   foreignKey: {
-    name: "userId",
-    allowNull: false,
-  },
+    name: 'userId'
+  }
 });
 Account.belongsTo(User, {
   foreignKey: {
-    name: "userId",
-    allowNull: false,
-  },
+    name: 'userId',
+    allowNull: false
+  }
 });
 
 Proxy.hasMany(Account, {
   foreignKey: {
-    name: "proxyId",
-  },
+    name: 'proxyId'
+  }
 });
 Account.belongsTo(Proxy, {
   foreignKey: {
-    name: "proxyId",
-  },
+    name: 'proxyId'
+  }
 });
 
 module.exports = Account;

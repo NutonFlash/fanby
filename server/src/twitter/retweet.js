@@ -1,8 +1,8 @@
-const { By, until } = require("selenium-webdriver");
-const { profile, media: mediaSelectors } = require("./selectors");
-const { closeDialog, delay, scrollIntoView, isClickable } = require("./utils");
-const { Driver } = require("selenium-webdriver/chrome");
-const { webdriver, logger } = require("./dependencies");
+const { By, until } = require('selenium-webdriver');
+const { profile, media: mediaSelectors } = require('./selectors');
+const { closeDialog, delay, scrollIntoView, isClickable } = require('./utils');
+const { Driver } = require('selenium-webdriver/chrome');
+const { webdriver, logger } = require('./dependencies');
 
 /**
  * Retweet pinned tweet from the user page
@@ -27,7 +27,7 @@ exports.retweetPinned = async function retweetPinned(userLink) {
 exports.retweetOwn = async function retweetOwn(username, retweetNumber) {
   await webdriver.get(`https://twitter.com/${username}/media`);
   const container = await webdriver.wait(
-    until.elementLocated(By.css("main section")),
+    until.elementLocated(By.css('main section')),
     15000
   );
 
@@ -139,9 +139,9 @@ async function retweet(tweet = webdriver) {
     // Click retweet confirm button to retweet
     await retweetConfirmButton.click();
   } catch (error) {
-    logger.error("Failed to retweet", {
-      _module: "retwitter",
-      _function: "retweet",
+    logger.error('Failed to retweet', {
+      _module: 'retwitter',
+      _function: 'retweet'
     });
   }
 }
@@ -172,9 +172,9 @@ async function unretweet(tweet = webdriver) {
     // Click unretweet confirm button to unretweet
     await unretweetConfirmButton.click();
   } catch (error) {
-    logger.error("Failed to unretweet", {
-      _module: "retwitter",
-      _function: "unretweet",
+    logger.error('Failed to unretweet', {
+      _module: 'retwitter',
+      _function: 'unretweet'
     });
   }
 }
@@ -208,9 +208,9 @@ async function isPinnedTweet(tweet) {
     // If pin element was found it is pinned tweet
     isPinnedTweet = true;
   } catch (error) {
-    logger.error("Failed to find pin element", {
-      _module: "retwitter",
-      _function: "isPinnedTweet",
+    logger.error('Failed to find pin element', {
+      _module: 'retwitter',
+      _function: 'isPinnedTweet'
     });
   }
   return isPinnedTweet;
@@ -222,22 +222,22 @@ async function isPinnedTweet(tweet) {
  * @returns {String} Id or empty string if the link wasn't found
  */
 async function getTweetIdFromMedia(media) {
-  let id = ""; // Expected that link to each post looks like this: 'https://twitter.com/{username}/status/123213132341432'
+  let id = ''; // Expected that link to each post looks like this: 'https://twitter.com/{username}/status/123213132341432'
   const regex = /\/status\/(\d+)/;
   try {
     // Get the link value
-    const idLink = await media.getAttribute("href");
+    const idLink = await media.getAttribute('href');
     id = idLink.match(regex);
     // If id was found the length shoud be 2 (0: matching part, 1: captured group)
     if (id?.length === 2) {
       id = id[1];
     } else {
-      id = "";
+      id = '';
     }
   } catch (error) {
-    logger.error("Failed to find tweet Id", {
-      _module: "retwitter",
-      _function: "getTweetId",
+    logger.error('Failed to find tweet Id', {
+      _module: 'retwitter',
+      _function: 'getTweetId'
     });
   }
   return id;
@@ -249,7 +249,7 @@ async function getTweetIdFromMedia(media) {
  * @returns {String} Id or empty string if the link wasn't found
  */
 async function getTweetId(tweet) {
-  let id = ""; // Expected that link to each post looks like this: 'https://twitter.com/{username}/status/123213132341432'
+  let id = ''; // Expected that link to each post looks like this: 'https://twitter.com/{username}/status/123213132341432'
   const regex = /\/status\/(\d+)/;
   try {
     // Try to find the link with id element
@@ -259,19 +259,19 @@ async function getTweetId(tweet) {
       }, 3000)
     );
     // Get the link value
-    const idLink = await linkElement.getAttribute("href");
+    const idLink = await linkElement.getAttribute('href');
 
     id = idLink.match(regex);
     // If id was found the length shoud be 2 (0: matching part, 1: captured group)
     if (id?.length === 2) {
       id = id[1];
     } else {
-      id = "";
+      id = '';
     }
   } catch (error) {
-    logger.error("Failed to find tweet Id", {
-      _module: "retwitter",
-      _function: "getTweetId",
+    logger.error('Failed to find tweet Id', {
+      _module: 'retwitter',
+      _function: 'getTweetId'
     });
   }
   return id;
@@ -283,7 +283,7 @@ async function getTweetId(tweet) {
  * @returns {String} Username of tweet owner or empty string if the username wasn't found
  */
 async function getUsername(tweet) {
-  let link = "";
+  let link = '';
   try {
     // Try to find the link element for the user profile
     const linkElement = await webdriver.wait(
@@ -293,15 +293,15 @@ async function getUsername(tweet) {
       3000
     );
     // Get the link value
-    link = await linkElement.getAttribute("href");
+    link = await linkElement.getAttribute('href');
   } catch (error) {
-    logger.error("Failed to find user avatar", {
-      _module: "retwitter",
-      _function: "getUsername",
+    logger.error('Failed to find user avatar', {
+      _module: 'retwitter',
+      _function: 'getUsername'
     });
   }
   // Extract username from the link
-  return link.replace("https://twitter.com/", "");
+  return link.replace('https://twitter.com/', '');
 }
 
 /**
@@ -319,8 +319,8 @@ async function getNumberFromFeedHeader(username) {
   const matchArr = divText.match(/\d+/);
   if (!matchArr) {
     logger.error(`Failed to parse medias number of ${username} profle`, {
-      _module: "retwitter",
-      _function: "getNumberOfTweets",
+      _module: 'retwitter',
+      _function: 'getNumberOfTweets'
     });
   }
   return matchArr ? parseInt(matchArr[0]) : 0;

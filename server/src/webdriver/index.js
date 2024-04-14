@@ -1,8 +1,8 @@
-const { Builder, Browser } = require("selenium-webdriver");
-const { ServiceBuilder, Options } = require("selenium-webdriver/chrome");
-const fs = require("fs");
-const path = require("path");
-require("dotenv").config();
+const { Builder, Browser } = require('selenium-webdriver');
+const { ServiceBuilder, Options } = require('selenium-webdriver/chrome');
+const fs = require('fs');
+const path = require('path');
+require('dotenv').config();
 
 let webdriver;
 
@@ -15,7 +15,12 @@ async function init(proxy) {
   await webdriver
     .manage()
     .window()
-    .setRect({ width: 1920 / 2, height: 1080, x: 0, y: 0 });
+    .setRect({
+      width: 1920 / 2,
+      height: 1080,
+      x: 0,
+      y: 0
+    });
 
   return webdriver;
 }
@@ -64,7 +69,7 @@ function createProxyExtension(proxy) {
     chrome.webRequest.onAuthRequired.addListener(callbackFn, { urls: ["<all_urls>"] }, ["blocking"]);    
     `;
 
-  const folderPath = `${path.resolve(".")}/1`;
+  const folderPath = `${path.resolve('.')}/1`;
   const manifestPath = `${folderPath}/manifest.json`;
   const serviceWorkerPath = `${folderPath}/serviceWorker.js`;
 
@@ -83,15 +88,15 @@ async function createChromeDriver(proxy) {
 
   // chromeOptions.addArguments("--headless=new");
   chromeOptions.setChromeBinaryPath(process.env.CHROME_PATH);
-  chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
+  chromeOptions.addArguments('--disable-blink-features=AutomationControlled');
   if (proxy) {
     chromeOptions.addArguments(
       `--load-extension=${createProxyExtension(proxy)}`
     );
   }
   chromeOptions.excludeSwitches([
-    "enable-automation",
-    "useAutomationExtension=false",
+    'enable-automation',
+    'useAutomationExtension=false'
   ]);
 
   return await new Builder()
@@ -104,5 +109,5 @@ async function createChromeDriver(proxy) {
 module.exports = {
   init,
   destroy,
-  webdriver,
+  webdriver
 };

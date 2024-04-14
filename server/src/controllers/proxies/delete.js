@@ -1,23 +1,29 @@
-const Proxy = require("../../models/Proxy");
+const Proxy = require('../../models/Proxy');
+const { validateIdList } = require('../utils');
 
 async function deleteProxies(req, res) {
   const userId = req.user.id;
-  const { ids } = req.query;
+  const { ids: idsStr } = req.query;
 
-  if (!ids) {
-    return res.status(400).send("Ids query is required");
+  const idsValidation = validateIdList(idsStr);
+
+  if (idsValidation.type === 'error') {
+    return res.status(400).json({ error: idsValidation.message });
   }
 
-  const idsToDelete = ids.split(",");
+  const ids = idsValidation.data;
 
   try {
     await Proxy.destroy({
-      where: { userId, id: idsToDelete },
+      where: { userId, id: ids }
     });
-    res.sendStatus(200);
+
+    return res.sendStatus(200);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "The database is currently unavailable." });
+    return res
+      .status(500)
+      .json({ error: 'The database is currently unavailable.' });
   }
 }
 

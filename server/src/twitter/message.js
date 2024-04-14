@@ -1,7 +1,7 @@
-const { By, until } = require("selenium-webdriver");
-const { conversation, media } = require("./selectors");
-const { scrollIntoView, delay } = require("./utils");
-const { webdriver, logger } = require("./dependencies");
+const { By, until } = require('selenium-webdriver');
+const { conversation, media } = require('./selectors');
+const { scrollIntoView, delay } = require('./utils');
+const { webdriver, logger } = require('./dependencies');
 
 /**
  * Parse specific number of messages from unique accounts within given conversation, skip own and anti-bot accounts messages
@@ -34,11 +34,11 @@ exports.getMessages = async function getMessages(
   while (messages.length < messagesNumber && heightRepeatCounter < 5) {
     // Get all visible div elements which represent message entity
     const messageContainers = await webdriver.wait(
-      until.elementsLocated(() => {
-        return conversationContainer.findElements(
+      until.elementsLocated(() =>
+        conversationContainer.findElements(
           By.css(conversation.messageContainer)
-        );
-      }),
+        )
+      ),
       5000
     );
 
@@ -114,7 +114,7 @@ exports.getMessages = async function getMessages(
  * @returns {String} Text of the message
  */
 async function getTextFromMessage(messageElement) {
-  let text = "";
+  let text = '';
   try {
     // Find all spans in text section of the message
     spans = await messageElement.findElements(
@@ -128,11 +128,11 @@ async function getTextFromMessage(messageElement) {
       } catch (error) {}
     }
     // clean concatenated text
-    text = text.trim().replace("\n", "").replace("\t", "").replace(/\s+/g, " ");
+    text = text.trim().replace('\n', '').replace('\t', '').replace(/\s+/g, ' ');
   } catch (error) {
-    logger.error("Spans in message not found", {
-      _module: "messageParser",
-      _function: "getTextFromMessage",
+    logger.error('Spans in message not found', {
+      _module: 'messageParser',
+      _function: 'getTextFromMessage'
     });
   }
 
@@ -145,10 +145,10 @@ async function getTextFromMessage(messageElement) {
  * @returns {String|null} Link to user accounr or null
  */
 function getUserLinkFromText(text) {
-  const foundLinks = text.split(" ").filter((str) => str.match(/@.+/g));
-  let link = "";
+  const foundLinks = text.split(' ').filter((str) => str.match(/@.+/g));
+  let link = '';
   if (foundLinks.length > 0) {
-    link = foundLinks[0].replace("@", "");
+    link = foundLinks[0].replace('@', '');
   }
   return link ? `https://twitter.com/${link}` : null;
 }
@@ -159,22 +159,22 @@ function getUserLinkFromText(text) {
  * @returns {String} Link to the user account
  */
 async function getLinkFromMessage(messageElement) {
-  let link = "";
+  let link = '';
   try {
     const linkElement = await webdriver.wait(
-      until.elementLocated(() => {
-        return messageElement.findElement(
+      until.elementLocated(() =>
+        messageElement.findElement(
           By.css(`${conversation.conversationUserAvatar} a`)
-        );
-      }),
+        )
+      ),
       3000
     );
     // Find the link of the user in message node and get the attribute href
-    link = await linkElement.getAttribute("href");
+    link = await linkElement.getAttribute('href');
   } catch (error) {
-    logger.error("User link not found", {
-      _module: "messageParser",
-      _function: "getLinkFromMessage",
+    logger.error('User link not found', {
+      _module: 'messageParser',
+      _function: 'getLinkFromMessage'
     });
   }
 
@@ -187,24 +187,22 @@ async function getLinkFromMessage(messageElement) {
  * @returns {String} String of base-64 encoded image
  */
 async function getPictureFromMessage(messageElement) {
-  let imageBase64 = "";
+  let imageBase64 = '';
   try {
     // Check if the message
     const compositMsg = await webdriver.wait(
-      until.elementLocated(() => {
-        return messageElement.findElement(
-          By.css(conversation.compositeMessage)
-        );
-      }),
+      until.elementLocated(() =>
+        messageElement.findElement(By.css(conversation.compositeMessage))
+      ),
       3000
     );
 
     try {
       // Find image node and open it by click
       const image = await webdriver.wait(
-        until.elementLocated(() => {
-          return compositMsg.findElement(By.css(conversation.messagePicture));
-        }),
+        until.elementLocated(() =>
+          compositMsg.findElement(By.css(conversation.messagePicture))
+        ),
         3000
       );
       await image.click();
@@ -219,15 +217,15 @@ async function getPictureFromMessage(messageElement) {
         .wait(until.elementLocated(By.css(media.closeButton), 5000))
         .click();
     } catch (error) {
-      logger.error("Image in message not found", {
-        _module: "messageParser",
-        _function: "getPictureFromMessage",
+      logger.error('Image in message not found', {
+        _module: 'messageParser',
+        _function: 'getPictureFromMessage'
       });
     }
   } catch (error) {
-    logger.error("CompositeMessage not found", {
-      _module: "messageParser",
-      _function: "getPictureFromMessage",
+    logger.error('CompositeMessage not found', {
+      _module: 'messageParser',
+      _function: 'getPictureFromMessage'
     });
   }
 

@@ -1,33 +1,34 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../sequelize");
-const Account = require("./Account");
+const { DataTypes } = require('sequelize');
+const sequelize = require('../sequelize');
+const Account = require('./Account');
 
-const AccountStats = sequelize.define("AccountStats", {
+const AccountStats = sequelize.define('AccountStats', {
   activityToday: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
+    defaultValue: 0
   },
   retweetsToday: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
+    defaultValue: 0
   },
   messagesToday: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
-  },
+    defaultValue: 0
+  }
 });
 
-Account.hasOne(AccountStats, {
+Account.hasMany(AccountStats, {
   foreignKey: {
-    name: "accountId",
-    allowNull: false,
+    name: 'accountId',
+    allowNull: false
   },
+  as: 'accountStats'
 });
 AccountStats.belongsTo(Account, {
   foreignKey: {
-    name: "accountId",
-    allowNull: false,
-  },
+    name: 'accountId',
+    allowNull: false
+  }
 });
 
 module.exports = AccountStats;

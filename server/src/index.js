@@ -1,8 +1,8 @@
-require("dotenv").config();
+require('dotenv').config();
 // const executor = require("./services/executor");
-const _app = require("./app");
-const _wss = require("./wss");
-const http = require("http");
+const http = require('http');
+const _app = require('./app');
+const _wss = require('./wss');
 // const executor = require("./services/executor");
 
 const PORT = process.env.APP_PORT || 3000;
@@ -49,29 +49,29 @@ async function main() {
   //       own: 0,
   //     },
   //   },
-    // {
-    // 	options: {
-    // 		username: "dropdrop_5",
-    // 		password: "Sahalox2",
-    // 		proxy:
-    // 			"socks5://MsGqKCw3wTX4RoC835PdXZNr91zUgU:c5m5DazexI99jLab_country-kr_session-Rx2qyfkJ_lifetime-1h@proxy.digiproxy.cc:8083",
-    // 	},
-    // 	groups: [
-    // 		{
-    // 			id: "1725500302185406830",
-    // 			messagesNumber: 3,
-    // 		},
-    // 		{
-    // 			id: "1719635426057630200",
-    // 			messagesNumber: 5,
-    // 		},
-    // 		{
-    // 			id: "1730563812057895261",
-    // 			messagesNumber: 5,
-    // 		},
-    // 	],
-    // 	own: 5,
-    // },
+  // {
+  // 	options: {
+  // 		username: "dropdrop_5",
+  // 		password: "Sahalox2",
+  // 		proxy:
+  // 			"socks5://MsGqKCw3wTX4RoC835PdXZNr91zUgU:c5m5DazexI99jLab_country-kr_session-Rx2qyfkJ_lifetime-1h@proxy.digiproxy.cc:8083",
+  // 	},
+  // 	groups: [
+  // 		{
+  // 			id: "1725500302185406830",
+  // 			messagesNumber: 3,
+  // 		},
+  // 		{
+  // 			id: "1719635426057630200",
+  // 			messagesNumber: 5,
+  // 		},
+  // 		{
+  // 			id: "1730563812057895261",
+  // 			messagesNumber: 5,
+  // 		},
+  // 	],
+  // 	own: 5,
+  // },
   // ];
   // for (req of reqs) {
   //   await executor.init(req.config);

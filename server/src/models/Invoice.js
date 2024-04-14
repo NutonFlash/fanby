@@ -1,48 +1,52 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../sequelize");
-const User = require("./User");
+const { DataTypes } = require('sequelize');
+const sequelize = require('../sequelize');
+const User = require('./User');
 
-const Invoice = sequelize.define("Invoices", {
+const Invoice = sequelize.define('Invoices', {
   amount: {
     type: DataTypes.FLOAT,
-    allowNull: false,
+    allowNull: false
+  },
+  actQty: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
   link: {
     type: DataTypes.STRING,
-    allowNull: false,
+    defaultValue: ''
   },
   received: {
     type: DataTypes.FLOAT,
-    defaultValue: 0,
+    defaultValue: 0
   },
   currency: {
     type: DataTypes.STRING,
-    defaultValue: "USDT_TRX",
+    defaultValue: 'USDT_TRX'
   },
   status: {
     type: DataTypes.ENUM(
-      "Created",
-      "Pending",
-      "Expired",
-      "Completed",
-      "Error",
-      "Unknown"
+      'Created',
+      'Pending',
+      'Expired',
+      'Completed',
+      'Error',
+      'Unknown'
     ),
-    defaultValue: "Created",
-  },
+    defaultValue: 'Created'
+  }
 });
 
-User.hasOne(Invoice, {
+User.hasMany(Invoice, {
   foreignKey: {
-    name: "userId",
-    allowNull: false,
-  },
+    name: 'userId',
+    allowNull: false
+  }
 });
 Invoice.belongsTo(User, {
   foreignKey: {
-    name: "userId",
-    allowNull: false,
-  },
+    name: 'userId',
+    allowNull: false
+  }
 });
 
 module.exports = Invoice;

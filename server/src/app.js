@@ -1,7 +1,7 @@
-const apiRouter = require("./api");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const express = require("express");
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const express = require('express');
+const apiRouter = require('./api');
 
 let app;
 
@@ -10,13 +10,13 @@ function init() {
   app.use(
     cors({
       origin: true,
-      credentials: true,
+      credentials: true
     })
   );
   app.use(cookieParser());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use("/api", apiRouter);
+  app.use('/api', apiRouter);
 
   return app;
 }
@@ -27,5 +27,5 @@ function destroy() {
 
 module.exports = {
   init,
-  destroy,
+  destroy
 };

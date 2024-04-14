@@ -1,46 +1,75 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
-const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
-const JWT_REFRESH_SECRET_KEY = process.env.JWT_REFRESH_SECRET_KEY;
+const { JWT_SECRET_KEY } = process.env;
+const { JWT_REFRESH_SECRET_KEY } = process.env;
 
 function generateTokens(payload) {
-  const accessToken = jwt.sign(payload, JWT_SECRET_KEY, { expiresIn: "15m" });
+  const accessToken = jwt.sign(payload, JWT_SECRET_KEY, { expiresIn: '15m' });
   const refreshToken = jwt.sign(payload, JWT_REFRESH_SECRET_KEY, {
-    expiresIn: "14d",
+    expiresIn: '14d'
   });
   return { accessToken, refreshToken };
 }
 
-function authorizeToken(req, res, next) {
-  const authHeader = req.get("Authorization");
-
-  if (!authHeader) {
-    return res
-      .status(401)
-      .json({ error: "Authorization header is required" });
+function validateProps(obj, props) {
+  if (!obj) {
+    return 'No data provided';
   }
 
-  const parts = authHeader.split(" ");
-
-  if (parts.length !== 2 || parts[0] !== "Bearer") {
-    return res.status(401).json({
-      error:
-        "Authorization header must be in the format 'Bearer <token>'",
-    });
+  if (Array.isArray(obj)) {
+    return 'Request body must be an object';
   }
 
-  const token = parts[1];
+  const objKeys = Object.keys(obj);
 
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET_KEY);
-    req.user = { id: decoded.id, email: decoded.email };
-    next();
-  } catch (error) {
-    return res.status(401).json({ error: "Invalid token" });
+  for (let i = 0; i < objKeys.length; i += 1) {
+    const key = objKeys[i];
+
+    if (!props.includes(key)) {
+      return `Invalid {${key}} property`;
+    }
+
+    if (!propTypeValidFnMap[key](obj[key])) {
+      return `Invalid type of {${key}} property`;
+    }
+
+    if (!propValueValidFnMap[key](obj[key])) {
+      return `Invalid format of {${key}} property`;
+    }
   }
+
+  return '';
 }
 
+const propTypeValidFnMap = {
+  email: (val) => typeof val === 'string',
+  password: (val) => typeof val === 'string',
+  referalCode: (val) => typeof val === 'string',
+  refreshToken: (val) => typeof val === 'string'
+};
+
+const VAL_CONSTS = {
+  EMAIL_REGEX: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+  MIN_PASS_LEN: 8,
+  MAX_PASS_LEN: 127
+};
+
+const propValueValidFnMap = {
+  email: (val) => {
+    const match = val.match(VAL_CONSTS.EMAIL_REGEX);
+    return match && match[0] === val;
+  },
+  password: (val) => {
+    return (
+      val.length <= VAL_CONSTS.MAX_PASS_LEN &&
+      val.length >= VAL_CONSTS.MIN_PASS_LEN
+    );
+  },
+  referalCode: () => true,
+  refreshToken: () => true
+};
+
 module.exports = {
-  authorizeToken,
   generateTokens,
+  validateProps
 };

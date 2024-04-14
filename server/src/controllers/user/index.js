@@ -1,8 +1,8 @@
-const fetchUser = require("./get");
+const express = require('express');
+const getUserById = require('./getById');
 
-const express = require("express");
 const router = express.Router();
 
-router.get("/", fetchUser);
+router.get('/', getUserById);
 
 module.exports = router;

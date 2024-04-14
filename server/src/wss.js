@@ -1,7 +1,7 @@
-const { WebSocketServer } = require("ws");
-const jwt = require("jsonwebtoken");
+const { WebSocketServer } = require('ws');
+const jwt = require('jsonwebtoken');
 
-const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+const { JWT_SECRET_KEY } = process.env;
 
 let wss;
 const clients = new Map();
@@ -16,27 +16,27 @@ function verifyJwtAndGetUserId(token) {
 }
 
 function init(server) {
-  wss = new WebSocketServer({ server, path: "/wss" });
+  wss = new WebSocketServer({ server, path: '/wss' });
 
-  wss.on("connection", (ws, req) => {
+  wss.on('connection', (ws, req) => {
     const url = new URL(req.url, `http://${req.headers.host}`);
-    const token = url.searchParams.get("token");
+    const token = url.searchParams.get('token');
     if (token) {
       const userId = verifyJwtAndGetUserId(token);
       if (userId) {
         clients.set(userId, ws);
-        ws.on("close", () => {
+        ws.on('close', () => {
           clients.delete(userId);
         });
       } else {
-        ws.close(1008, "Invalid token");
+        ws.close(1008, 'Invalid token');
       }
     } else {
-      ws.close(1008, "No token provided");
+      ws.close(1008, 'No token provided');
     }
   });
 
-  wss.on("error", (error) => {
+  wss.on('error', (error) => {
     console.log(error.message);
   });
 
@@ -54,5 +54,5 @@ function destroy() {
 module.exports = {
   init,
   getSocketByUserId,
-  destroy,
+  destroy
 };
