@@ -396,6 +396,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       This endpoint requires authentication. Include an **Authorization header** with a valid JWT token.
     
       Request Body:
+    
       Array of proxy objects to be created.
       ```
       [{
