@@ -128,6 +128,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      This endpoint requires authentication. Include an **Authorization header** with a valid JWT token.
     
      Parametres:
+       - "**includeProxy**" (optional): Boolean value whether to include proxy binded to the account in the response.
+       - "**includeMessages**" (optional): Boolean value whether to include account messages in the response.
        - "**includeState**" (optional): Boolean value whether to include account state in the response.
        - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
        - "**includeGroups**" (optional): Boolean value whether to include array of groups used by account in the response.
@@ -135,7 +137,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
 
      Request:
 
-     `GET /twitter-accounts?includeState=true&includeAccountStats=2024-04-05,2024-04-06`
+     `GET /twitter-accounts?includeProxy=true&includeState=true&includeAccountStats=2024-04-05,2024-04-06`
 
      Response:
      ```
@@ -155,6 +157,16 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "expirationDate": "2024-04-30 12:00:00",
       "createdAt": "2024-04-05 02:00:00",
       "updatedAt": "2024-04-05 12:00:00",
+      "proxy": {
+        "id": "3",
+        "userId": "10",
+        "host": "digital.cc",
+        "port": 8000,
+        "username": "NutonFlashProxy",
+        "password": "axSDla12apad",
+        "createdAt": "2024-04-06 00:00:00",
+        "updatedAt": "2024-04-06 23:00:00",
+      },
       "state": {
         "accountId" : "102",
         "isRunning": false,
@@ -190,6 +202,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     This endpoint requires authentication. Include an **Authorization header** with a valid JWT token.
 
     Parametres:
+      - "**includeProxy**" (optional): Boolean value whether to include proxy binded to the account in the response.
+      - "**includeMessages**" (optional): Boolean value whether to include account messages in the response.
       - "**includeState**" (optional): Boolean value whether to include account state in the response.
       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
       - "**includeGroups**" (optional): Boolean value whether to include array of groups used by account in the response.
