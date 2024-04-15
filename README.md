@@ -395,10 +395,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
 
       This endpoint requires authentication. Include an **Authorization header** with a valid JWT token.
     
-      Parametres:
-        - "**proxies**" (required): Array of proxy objects to be created.
-      
       Request Body:
+      Array of proxy objects to be created.
       ```
       [{
         "host": "digit.cc",
