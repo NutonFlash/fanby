@@ -131,13 +131,13 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
        - "**includeProxy**" (optional): Boolean value whether to include proxy binded to the account in the response.
        - "**includeMessages**" (optional): Boolean value whether to include account messages in the response.
        - "**includeState**" (optional): Boolean value whether to include account state in the response.
-       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
+       - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}` where each date is ISOString, e.g., `2024-04-05T00:00:00.036Z` or `2024-04-05T00:00:00.036Z,2024-04-06T23:59:59.036Z`.
        - "**includeGroups**" (optional): Boolean value whether to include array of groups used by account in the response.
-       - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
+       - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format `{startDate,endDate}` where each date is ISOString, e.g., `2024-04-05T00:00:00.036Z` or `2024-04-05T00:00:00.036Z,2024-04-06T23:59:59.036Z`.
 
      Request:
 
-     `GET /twitter-accounts?includeProxy=true&includeState=true&includeAccountStats=2024-04-05,2024-04-06`
+     `GET /twitter-accounts?includeProxy=true&includeState=true&includeAccountStats=2024-04-05T00:00:00.036Z,2024-04-06T23:59:59.036Z`
 
      Response:
      ```
@@ -205,13 +205,13 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       - "**includeProxy**" (optional): Boolean value whether to include proxy binded to the account in the response.
       - "**includeMessages**" (optional): Boolean value whether to include account messages in the response.
       - "**includeState**" (optional): Boolean value whether to include account state in the response.
-      - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
+      - "**includeAccountStats**" (optional): Date range for which to include account stats. This can be a single date or a date range in the format `{startDate,endDate}` where each date is ISOString, e.g., `2024-04-05T00:00:00.036Z` or `2024-04-05T00:00:00.036Z,2024-04-06T23:59:59.036Z`.
       - "**includeGroups**" (optional): Boolean value whether to include array of groups used by account in the response.
-      - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format `{startDate,endDate}`, e.g., `2024-04-05` or `2024-04-05,2024-04-06`.
+      - "**includeGroupStats**" (optional): Date range for which to include group stats. This can be a single date or a date range in the format `{startDate,endDate}` where each date is ISOString, e.g., `2024-04-05T00:00:00.036Z` or `2024-04-05T00:00:00.036Z,2024-04-06T23:59:59.036Z`.
 
     Request:
 
-    `GET /twitter-accounts/102?includeState=true&includeAccountStats=2024-04-05&includeGroups=true&includeGroupStats=2024-04-05`
+    `GET /twitter-accounts/102?includeState=true&includeAccountStats=2024-04-05&includeGroups=true&includeGroupStats=2024-04-05T00:00:00.036Z`
 
     Response:
     ```
