@@ -5,7 +5,7 @@
     - [Authentication](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#authentication)
     - [Endpoints](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#endpoints)
       - [Auth](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#1-auth-white_check_mark)
-      - [User](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#2-user-white_check_mark)
+      - [Users](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#2-users-white_check_mark)
       - [Twitter Accounts](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#3-twitter-accounts-white_check_mark)
       - [Proxies](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#4-proxies-white_check_mark)
       - [Invoices](https://github.com/NutonFlash/fanby-app/?tab=readme-ov-file#5-invoices-white_check_mark)
@@ -101,10 +101,10 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      }
      ```
      
-#### 2. User :white_check_mark:
+#### 2. Users :white_check_mark:
    - **Get User**
      
-     `GET /user` - returns an information about user who sent the request.
+     `GET /users/{id}` - returns user entity by the specified `id`.
 
      This endpoint requires authentication. Include an **Authorization header** with a valid JWT token.
  
@@ -113,13 +113,30 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      {
       "id": "17",
       "email": "example@gmail.com",
+      "timezone": "Asia/Seoul", 
       "referalCode": "DISC2024",
       "activationsLeft": 3,
       "createdAt": "2024-02-12 13:00:00",
       "updatedAt": "2024-03-23 19:20:32",
      }
      ```
-
+   - **Update User**
+     
+      `PUT /users/{id}` - update user entity by the specified `id`.
+      
+      This endpoint requires authentication. Include an **Authorization header** with a valid JWT token.
+      
+      Parametres:
+        - "**password**" (optional): Updated user password.
+        - "**timezone**" (optional): Updated user timezone.
+      
+      Request Body:
+      ```
+      {
+        "password": "Param01",
+        "timezone": "Canada/Yukon"
+      }
+      ```
 
 #### 3. Twitter Accounts :white_check_mark:
 
