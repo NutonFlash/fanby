@@ -66,6 +66,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      {
       "email": "example@gmail.com",
       "password": "axSDla12apad",
+      "timezone": "Asia/Seoul",
       "referalCode": "EXAMPLE007"
      }
      ```
