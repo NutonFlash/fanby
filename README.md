@@ -58,6 +58,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      Parametres:
      - "**email**" (required): User email.
      - "**password**" (required): User password.
+     - "**timezone**" (required): User timezone.
      - "**referalCode**" (optional): Referal code.
 
      Request Body:
