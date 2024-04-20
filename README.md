@@ -111,7 +111,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      Response:
      ```
      {
-      "id": "17",
+      "id": 17,
       "email": "example@gmail.com",
       "timezone": "Asia/Seoul", 
       "referalCode": "DISC2024",
@@ -161,9 +161,9 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      Response:
      ```
      [{
-      "id": "102",
-      "userId": "10",
-      "proxyId": "20",
+      "id": 102,
+      "userId": 10,
+      "proxyId": 20,
       "username": "NutonFlash",
       "avatar": "",
       "followers": 202,
@@ -177,8 +177,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       "createdAt": "2024-04-05 02:00:00",
       "updatedAt": "2024-04-05 12:00:00",
       "proxy": {
-        "id": "3",
-        "userId": "10",
+        "id": 3,
+        "userId": 10,
         "host": "digital.cc",
         "port": 8000,
         "username": "NutonFlashProxy",
@@ -187,15 +187,15 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
         "updatedAt": "2024-04-06 23:00:00",
       },
       "state": {
-        "accountId" : "102",
+        "accountId" : 102,
         "isRunning": false,
         "label": "Disabled"
         "details": "The account is in the disabled state."
       }
       "accountStats": [
         {
-          "id": "13",
-          "accountId": "102",
+          "id": 13,
+          "accountId": 102,
           "activityToday": 23313,
           "retweetsToday": 323,
           "messagesToday": 19,
@@ -203,8 +203,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
           "updatedAt": "2024-04-05 19:23:00",
         },
         {
-          "id": "14",
-          "accountId": "102",
+          "id": 14,
+          "accountId": 102,
           "activityToday": 0,
           "retweetsToday": 0,
           "messagesToday": 0,
@@ -234,9 +234,9 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     Response:
     ```
     {
-    "id": "102",
-    "userId": "10",
-    "proxyId": "20",
+    "id": 102,
+    "userId": 10,
+    "proxyId": 20,
     "username": "NutonFlash",
     "avatar": "",
     "followers": 202,
@@ -250,7 +250,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     "createdAt": "2024-04-05 02:00:00",
     "updatedAt": "2024-04-05 12:00:00",
     "state": {
-      "accountId" : "102",
+      "accountId" : 102,
       "isRunning": true,
       "label": "Running"
       "details": "The account is in the running state. It makes retweets and write messages in automatic mode."
@@ -259,8 +259,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     }
     "accountStats": [
       {
-        "id": "13",
-        "accountId": "102",
+        "id": 13,
+        "accountId": 102,
         "activityToday": 23313,
         "retweetsToday": 323,
         "messagesToday": 19,
@@ -269,8 +269,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       }
     ],
     joinAccountGroups: {
-      "id": "3",
-      "accountId": "102",
+      "id": 3,
+      "accountId": 102,
       "groupId": "1730563812057895261",
       "isUsed": true,
       "createdAt": "2024-04-05 00:00:00",
@@ -290,8 +290,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       },
       "accountGroupStats": [
         {
-          "id": "12",
-          "joinId": "3",
+          "id": 12,
+          "joinId": 3,
           "activityToday": 312321,
           "retweetsToday": 90,
           "messagesToday": 23,
@@ -323,8 +323,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     Response:
     ```
     {
-    "id": "2",
-    "userId": "12",
+    "id": 2,
+    "userId": 12,
     "proxyId": null,
     "username": "NutonFlash",
     "avatar": "",
@@ -339,15 +339,15 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     "createdAt": "2024-04-05 12:00:00",
     "updatedAt": "2024-04-05 12:00:00",
     "state": {
-      "accountId" : "2",
+      "accountId" : 2,
       "isRunning": false,
       "label": "Disabled"
       "details": "The account is in the disabled state."
     }
     "accountStats": [
       {
-        "id": "1",
-        "accountId": "2",
+        "id": 1,
+        "accountId": 2,
         "activityToday": 0,
         "retweetsToday": 0,
         "messagesToday": 0,
@@ -379,7 +379,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     Request Body:
     ```
     {
-      "proxyId": "122",
+      "proxyId": 122,
       "password": "axSDla12apad",
       "followers": 20,
       "posts": 4000,
@@ -411,8 +411,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       Response:
       ```
       [{
-        "id": "3",
-        "userId": "10",
+        "id": 3,
+        "userId": 10,
         "host": "digital.cc",
         "port": 8000,
         "username": "NutonFlashProxy",
@@ -445,8 +445,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
      Response:
      ```
       [{
-        "id": "3",
-        "userId": "10",
+        "id": 3,
+        "userId": 10,
         "host": "digital.cc",
         "port": 8000,
         "username": "",
@@ -455,8 +455,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
         "updatedAt": "2024-04-06 00:00:00",
       },
       {
-        "id": "4",
-        "userId": "10",
+        "id": 4,
+        "userId": 10,
         "host": "digital.cc",
         "port": 8001,
         "username": "BelieverProxy",
@@ -516,11 +516,11 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     {
       "fastProxies": {
         "label": "Fast proxies",
-        "ids": ["2"],
+        "ids": [2],
       },
       "mediumProxies": {
         "label": "Medium proxies",
-        "ids": ["4"],
+        "ids": [4],
       }
       "slowProxies": {
         "label": "Slow proxies",
@@ -528,7 +528,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       },
       "notWorkingProxies": {
         "label": "Not working proxies",
-        "ids": ["12"],
+        "ids": [12],
       }
     }
     ```
@@ -537,7 +537,7 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     {
       "type": "proxy_info",
       "data": {
-        "proxyId": "2",
+        "proxyId": 2,
         "progress": 77.23,
         "info": {
           "status": "fast",
@@ -557,8 +557,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
       Response:
       ```
       [{
-        "id": "3",
-        "userId": "10",
+        "id": 3,
+        "userId": 10,
         "amount": 150,
         "link": "https://plisio.net/invoice/66043debdb94f7010a0a0425",
         "received": 149.9123,
@@ -591,8 +591,8 @@ User Id is automatically exctracted from payload of JWT Token for every authoriz
     Response:
     ```
     {
-    "id": "31",
-    "userId": "10",
+    "id": 31,
+    "userId": 10,
     "amount": 150.0,
     "actQty": 5,
     "link": "https://plisio.net/invoice/66043debdb94f7010a0a0425",
